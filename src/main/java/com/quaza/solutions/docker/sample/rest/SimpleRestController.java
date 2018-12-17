@@ -5,19 +5,26 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RefreshScope
+import javax.annotation.PostConstruct;
+
 @RestController
+@RefreshScope
 public class SimpleRestController {
 
 
-    @Value("${message}")
+    @Value("${customer.message}")
     private String customerMessage;
 
+
     //@GetMapping("/message")
-    @RequestMapping("/message")
-    private String getCustomerGreeting() {
+    @RequestMapping("/message-test")
+    public String getCustomerGreeting() {
         System.out.println("customerMessage = " + customerMessage);
         return customerMessage;
     }
 
+    @PostConstruct
+    public void postConstruct() {
+        System.out.println("customerMessage = " + customerMessage);
+    }
 }
