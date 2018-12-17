@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SimpleRestController {
 
 
-    @Value("${customer.message}")
+    @Value("${message}")
     private String customerMessage;
 
     //@GetMapping("/message")
